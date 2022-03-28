@@ -22,8 +22,18 @@ class lensSingleton {
     this.lensHub = lensHub;
   }
 
+  async createPost(request) {
+    console.log("request : ", request)
+
+    const tx = await this.lensHub.post(request);
+
+    const mined = await tx.wait();
+    console.log(mined);
+    return mined;
+  }
+
   async updateProfilPicture(request) {
-    console.log(request)
+    console.log("request : ", request)
 
     const tx = await this.lensHub.setProfileImageURI(request.profileId, request.url);
 

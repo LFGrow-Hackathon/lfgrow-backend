@@ -1,28 +1,36 @@
 // const ceramic = require("./ceramic.js")
 const lens = require("./lens.js")
 
-const setDispatcher = async function (req, res, next) {
+const createPost = async function (req, res, next) {
   try {
-    console.log(req.body)
-    const result = await lens.setDispatcher(req.body)
+    const result = await lens.createPost(req.body)
+    console.log("result ", result)
 
     res.send("I'm back");
   } catch (error) {
-    console.error(error);
-    next();
+    next(error);
+  }
+}
+
+const setDispatcher = async function (req, res, next) {
+  try {
+    const result = await lens.setDispatcher(req.body)
+    console.log("result ", result)
+
+    res.send("I'm back");
+  } catch (error) {
+    next(error);
   }
 }
 
 const updateProfilPicture = async function (req, res, next) {
   try {
-    console.log(req.body)
     const result = await lens.updateProfilPicture(req.body)
 
     res.send("I'm back");
   } catch (error) {
-    console.error(error);
-    next();
+    next(error);
   }
 }
 
-module.exports = { setDispatcher, updateProfilPicture };
+module.exports = { setDispatcher, updateProfilPicture, createPost };
