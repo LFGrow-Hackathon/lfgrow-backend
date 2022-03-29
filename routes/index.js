@@ -6,7 +6,8 @@ const {
   createPost,
   createComment,
   follow,
-  unfollow
+  unfollow,
+  mirror
 } = require("../service/index.js");
 
 // router.post('/api/user', addUser);
@@ -16,5 +17,6 @@ router.post('/api/create-post', createPost);
 router.post('/api/create-comment', createComment);
 router.post('/api/follow', follow);
 router.post('/api/unfollow', unfollow);
+router.post('/api/mirror', mirror);
 
 module.exports = router;

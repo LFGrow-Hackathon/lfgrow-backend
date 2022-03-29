@@ -1,6 +1,17 @@
 // const ceramic = require("./ceramic.js")
 const lens = require("./lens.js")
 
+const mirror = async function (req, res, next) {
+  try {
+    const result = await lens.mirror(req.body)
+    console.log("result ", result)
+
+    res.send("I'm back");
+  } catch (error) {
+    next(error);
+  }
+}
+
 const unfollow = async function (req, res, next) {
   try {
     const result = await lens.unfollow(req.body)
@@ -72,5 +83,6 @@ module.exports = {
   createPost,
   createComment,
   follow,
-  unfollow
+  unfollow,
+  mirror
 };

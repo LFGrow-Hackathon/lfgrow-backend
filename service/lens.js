@@ -1,12 +1,12 @@
 const { DefenderRelaySigner, DefenderRelayProvider } = require('defender-relay-client/lib/ethers');
 const { ethers } = require('ethers');
-const { LENS_HUB_ABI, LENS_HUB_CONTRACT_ADDRESS, LENS_FOLLOW_NFT_ABI } = require("../config-abi.js");
+const { LENS_HUB_ABI, LENS_HUB_CONTRACT_ADDRESS, LENS_FOLLOW_NFT_CONTRACT_ADDRESS, LENS_FOLLOW_NFT_ABI } = require("../config-abi.js");
 
 class lensSingleton {
 
   constructor() {
     this.lensHub;
-    this.signer;
+    this.followNftContract;
   }
 
   setLensHub() {
@@ -24,15 +24,26 @@ class lensSingleton {
     this.signer = signer;
   }
 
-  async unfollow(request) {
+  async mirror(request) {
     console.log("request : ", request)
+
+    const tx = await this.lensHub.mirror(request);
+
+    const mined = await tx.wait();
+    console.log(mined);
+    return mined;
+  }
+
+
+  async unfollow(request) {
+    console.log("unfollow request : ", request)
 
     const followNftContract = new ethers.Contract(
       request.contractAddress,
       LENS_FOLLOW_NFT_ABI,
       this.signer
     );
-    console.log(followNftContract);
+
     const tx = await followNftContract.burnWithSig(request.tokenId, request.sig);
 
     const mined = await tx.wait();
