@@ -25,18 +25,16 @@ class lensSingleton {
   }
 
   async mirror(request) {
-    console.log("request : ", request)
+    console.log("request payload is : ", request)
 
     const tx = await this.lensHub.mirror(request);
 
-    const mined = await tx.wait();
-    console.log(mined);
-    return mined;
+    return tx.hash;
   }
 
 
   async unfollow(request) {
-    console.log("unfollow request : ", request)
+    console.log("request payload is : ", request)
 
     const followNftContract = new ethers.Contract(
       request.contractAddress,
@@ -46,57 +44,42 @@ class lensSingleton {
 
     const tx = await followNftContract.burnWithSig(request.tokenId, request.sig);
 
-    const mined = await tx.wait();
-    console.log(mined);
-    return mined;
+    return tx.hash;
   }
 
   async follow(request) {
-    console.log("request : ", request)
-
+    console.log("request payload is : ", request)
     const tx = await this.lensHub.followWithSig(request);
 
-    const mined = await tx.wait();
-    console.log(mined);
-    return mined;
+    return tx.hash;
   }
 
   async createComment(request) {
-    console.log("request : ", request)
-
+    console.log("request payload is : ", request)
     const tx = await this.lensHub.comment(request);
 
-    const mined = await tx.wait();
-    console.log(mined);
-    return mined;
+    return tx.hash;
   }
 
   async createPost(request) {
-    console.log("request : ", request)
-
+    console.log("request payload is : ", request)
     const tx = await this.lensHub.post(request);
 
-    const mined = await tx.wait();
-    console.log(mined);
-    return mined;
+    return tx.hash;
   }
 
   async updateProfilPicture(request) {
-    console.log("request : ", request)
-
+    console.log("request payload is : ", request)
     const tx = await this.lensHub.setProfileImageURI(request.profileId, request.url);
 
-    const mined = await tx.wait();
-    console.log(mined);
-    return mined;
+    return tx.hash;
   }
 
   async setDispatcher(request) {
+    console.log("request : ", request)
     const tx = await this.lensHub.setDispatcherWithSig(request)
 
-    const mined = await tx.wait();
-    console.log(mined);
-    return mined;
+    return tx.hash;
   }
 }
 

@@ -1,12 +1,16 @@
 # neptune-backend
-Back end for Neptune
+Transaction relayer for Zilly.
 
-Frontend repo is [here](https://github.com/LFGrow-Hackathon/lfgrow)
+Check Zilly's repo is [here](https://github.com/LFGrow-Hackathon/lfgrow)
+We are using a [relay](https://docs.openzeppelin.com/defender/relay) from OpenZeppelin Defender to broadcast the transactions.
+This server is the link between Zilly's frontend and the defender
 
 ## Env file
-Please create a `.env` file and add this :
+Please create a `.env` file and add this (ask Kipit for the API key and secret from Defender):
 ```
 PORT=8080
+YOUR_API_KEY=""
+YOUR_API_SECRET=""
 ```
 
 ## Server initialization

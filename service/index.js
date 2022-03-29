@@ -1,12 +1,11 @@
-// const ceramic = require("./ceramic.js")
 const lens = require("./lens.js")
 
 const mirror = async function (req, res, next) {
   try {
-    const result = await lens.mirror(req.body)
-    console.log("result ", result)
+    const hash = await lens.mirror(req.body)
 
-    res.send("I'm back");
+    console.log(hash);
+    res.send(hash);
   } catch (error) {
     next(error);
   }
@@ -14,10 +13,10 @@ const mirror = async function (req, res, next) {
 
 const unfollow = async function (req, res, next) {
   try {
-    const result = await lens.unfollow(req.body)
-    console.log("result ", result)
+    const hash = await lens.unfollow(req.body)
 
-    res.send("I'm back");
+    console.log(hash);
+    res.send(hash);
   } catch (error) {
     next(error);
   }
@@ -25,10 +24,10 @@ const unfollow = async function (req, res, next) {
 
 const follow = async function (req, res, next) {
   try {
-    const result = await lens.follow(req.body)
-    console.log("result ", result)
+    const hash = await lens.follow(req.body)
 
-    res.send("I'm back");
+    console.log(hash);
+    res.send(hash);
   } catch (error) {
     next(error);
   }
@@ -36,10 +35,10 @@ const follow = async function (req, res, next) {
 
 const createComment = async function (req, res, next) {
   try {
-    const result = await lens.createComment(req.body)
-    console.log("result ", result)
+    const hash = await lens.createComment(req.body)
 
-    res.send("I'm back");
+    console.log(hash);
+    res.send(hash);
   } catch (error) {
     next(error);
   }
@@ -47,10 +46,10 @@ const createComment = async function (req, res, next) {
 
 const createPost = async function (req, res, next) {
   try {
-    const result = await lens.createPost(req.body)
-    console.log("result ", result)
+    const hash = await lens.createPost(req.body)
 
-    res.send("I'm back");
+    console.log(hash);
+    res.send(hash);
   } catch (error) {
     next(error);
   }
@@ -58,10 +57,10 @@ const createPost = async function (req, res, next) {
 
 const setDispatcher = async function (req, res, next) {
   try {
-    const result = await lens.setDispatcher(req.body)
-    console.log("result ", result);
+    const hash = await lens.setDispatcher(req.body)
 
-    res.send("I'm back");
+    console.log(hash);
+    res.send(hash);
   } catch (error) {
     next(error);
   }
@@ -69,9 +68,10 @@ const setDispatcher = async function (req, res, next) {
 
 const updateProfilPicture = async function (req, res, next) {
   try {
-    const result = await lens.updateProfilPicture(req.body)
+    const hash = await lens.updateProfilPicture(req.body)
 
-    res.send("I'm back");
+    console.log(hash);
+    res.send(hash);
   } catch (error) {
     next(error);
   }
