@@ -12,7 +12,7 @@ class lensSingleton {
   setLensHub() {
     const credentials = { apiKey: process.env.YOUR_API_KEY, apiSecret: process.env.YOUR_API_SECRET };
     const provider = new DefenderRelayProvider(credentials);
-    const signer = new DefenderRelaySigner(credentials, provider, { speed: 'fast' });
+    const signer = new DefenderRelaySigner(credentials, provider, { speed: 'fastest' });
 
     const lensHub = new ethers.Contract(
       LENS_HUB_CONTRACT_ADDRESS,
